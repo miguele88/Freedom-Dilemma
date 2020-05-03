@@ -1,0 +1,473 @@
+def nivel1():
+    """Esta función crea todo el nivel 1 del juego, en donde se cargan todas 
+    las imagenes creadas en PowerPoint como interfaz gráfica, además de crear
+    todas las opciones que el jugador tiene disponibles"""
+    play("Prueba.mp3")
+    pygame.display.set_caption("Nivel 1")
+    size = 525,524
+    pantalla = pygame.display.set_mode(size)
+    
+    
+    reloj1=pygame.time.Clock()
+    """"Carga el la imagen de fondo de cada una de las pantallas del juego"""
+    
+    fondo = pygame.image.load("FondoJuego.png")
+    
+    """Se carga el fondo gris para cada vez que se cambia de pregunta"""
+    
+    P1N=pygame.image.load("P3N.png")
+    
+    """Se cargan las imágenes de cada una de las preguntas"""
+    
+    P1=pygame.image.load("N1P1.png")
+    P2=pygame.image.load("N1P2.png")
+    P3=pygame.image.load("N1P3.png")
+    P4=pygame.image.load("N1P4.png")
+    P5=pygame.image.load("N1P5.png")
+    P6=pygame.image.load("N1P6.png")
+    P7=pygame.image.load("N1P7.png")
+    P8=pygame.image.load("N1P8.png")
+    
+    """Se cargan las imágenes de las opciones de la primera y de la segunda
+    pregunta"""
+    
+    P1O11=pygame.image.load("N1O1-1.png")
+    P1O12=pygame.image.load("N1O1-2.png")
+    P1O21=pygame.image.load("N1O2-1.png")
+    P1O22=pygame.image.load("N1O2-2.png")
+    
+    #Se cargan las imágenes de las opciones de la pregunta 3
+    P3O11=pygame.image.load("N1P3O1-1.png")
+    P3O12=pygame.image.load("N1P3O1-2.png")
+    P3O21=pygame.image.load("N1P3O2-1.png")
+    P3O22=pygame.image.load("N1P3O2-2.png")
+    P3O31=pygame.image.load("N1P3O3-1.png")
+    P3O32=pygame.image.load("N1P3O3-2.png")
+    P3O41=pygame.image.load("N1P3O4-1.png")
+    P3O42=pygame.image.load("N1P3O4-2.png")    
+    
+    #Se cargan las imágenes de las opciones de la pregunta 5
+    P5O11=pygame.image.load("N1P5O1-1.png")
+    P5O12=pygame.image.load("N1P5O1-2.png")
+    P5O21=pygame.image.load("N1P5O2-1.png")
+    P5O22=pygame.image.load("N1P5O2-2.png")
+    P5O31=pygame.image.load("N1P5O3-1.png")
+    P5O32=pygame.image.load("N1P5O3-2.png")
+    
+    #Se cargan las imágenes de las opciones de la pregunta 6
+    P6O11=pygame.image.load("N1P6O1-1.png")
+    P6O12=pygame.image.load("N1P6O1-2.png")
+    P6O21=pygame.image.load("N1P6O2-1.png")
+    P6O22=pygame.image.load("N1P6O2-2.png")
+    P6O31=pygame.image.load("N1P6O3-1.png")
+    P6O32=pygame.image.load("N1P6O3-2.png")
+    P6O41=pygame.image.load("N1P6O4-1.png")
+    P6O42=pygame.image.load("N1P6O4-2.png")  
+    
+    #Se cargan las imágenes de las opciones de la pregunta 7
+    P7O11=pygame.image.load("N1P7O1-1.png")
+    P7O12=pygame.image.load("N1P7O1-2.png")
+    P7O21=pygame.image.load("N1P7O2-1.png")
+    P7O22=pygame.image.load("N1P7O2-2.png")
+    P7O31=pygame.image.load("N1P7O3-1.png")
+    P7O32=pygame.image.load("N1P7O3-2.png")
+    P7O41=pygame.image.load("N1P7O4-1.png")
+    P7O42=pygame.image.load("N1P7O4-2.png") 
+  
+    #Se crean los botones para la pregunta 1
+    PB1=Boton(P1O11,P1O12,60,370)
+    PB2=Boton(P1O21,P1O22,300,370)
+    
+        #Se crean los botones para la pregunta 2
+    P2B1=Boton(P1O11,P1O12,60,370)
+    P2B2=Boton(P1O21,P1O22,300,370)
+    
+    #Se crean los botones para la pregunta 3
+    P3B1=Boton(P3O11,P3O12,52,365)
+    P3B2=Boton(P3O21,P3O22,257,365)
+    PB3=Boton(P3O31,P3O32,52,423)
+    PB4=Boton(P3O41,P3O42,257,423)
+    
+    #Se crean los botones para la pregunta 5
+    P5B1=Boton(P5O11,P5O12,52,365)
+    P5B2=Boton(P5O21,P5O22,257,365)
+    P5B3=Boton(P5O31,P5O32,52,423)
+    
+    #Se crean los botones para la pregunta 6
+    P6B1=Boton(P6O11,P6O12,52,365)
+    P6B2=Boton(P6O21,P6O22,257,365)
+    P6B3=Boton(P6O31,P6O32,52,423)
+    P6B4=Boton(P6O41,P6O42,257,423)
+    
+    #Se crean los botones para la pregunta 7
+    P7B1=Boton(P7O11,P7O12,10,340)
+    P7B2=Boton(P7O21,P7O22,257,340)
+    P7B3=Boton(P7O31,P7O32,10,423)
+    P7B4=Boton(P7O41,P7O42,257,423)
+    
+     #Se crean los botones para la pregunta 8
+    P8B1=Boton(P1O11,P7O12,60,370)
+    P8B2=Boton(P1O21,P7O22,300,370)
+    
+    #Se carga el cursor
+    cursor1=Cursor()
+    
+    #Se ejecuta el nivel 1, hasta que el usuario cierre la ventana
+    ejecutar = True
+
+#Código para cambiar a la pregunta 8:
+    def pregunta8():
+        O3N=Boton(P1N,P1N,10,340)
+        P1=P8
+        PB1=P8B1
+        PB2=P8B2
+        ejecutarP8=True
+        while ejecutarP8:
+    #recorrer los enventos que se reproducen en la ventana
+            for event in pygame.event.get():
+                if cursor1.colliderect(PB1.rect) or cursor1.colliderect(PB2.rect):
+                    messagebox.showwarning("YOU WON!","Nivel Completado. Es usted libre. Puede seguir al siguiente nivel")
+                    finalLibre()
+                        
+            #se detecta cuando alguien cierra la ventana
+                if event.type == pygame.QUIT: ejecutarP8 = False
+                
+            reloj1.tick(20)
+        
+            pantalla.blit(P1,(10,300))
+    
+            cursor1.update()
+            
+            O3N.update(pantalla,cursor1)
+            PB1.update(pantalla,cursor1)
+            PB2.update(pantalla,cursor1)
+            
+            pygame.display.update()
+        pygame.quit()
+
+#Código para cambiar a la pregunta 6
+    def pregunta7():
+        P1=P7
+        PB1=P7B1
+        PB2=P7B2
+        PB3=P7B3  
+        PB4=P7B4
+
+#Condicional que definirá si el usuario gana o pierde en este camino    
+        
+        ejecutarP7=True
+        while ejecutarP7:
+    #recorrer los enventos que se reproducen en la ventana
+            for event in pygame.event.get():
+                if event.type==pygame.MOUSEBUTTONDOWN:
+                    if cursor1.colliderect(PB1.rect) or cursor1.colliderect(PB2.rect) or cursor1.colliderect(PB3.rect) or cursor1.colliderect(PB4.rect):
+                        pregunta8()
+                                
+            #se detecta cuando alguien cierra la ventana
+                if event.type == pygame.QUIT: 
+                    ejecutarP7 = False
+                    
+            reloj1.tick(20)
+        
+            pantalla.blit(P1,(10,300))
+    
+            cursor1.update()
+        
+            PB1.update(pantalla,cursor1)
+            PB2.update(pantalla,cursor1)
+            PB3.update(pantalla,cursor1)
+            PB4.update(pantalla,cursor1)
+            
+            pygame.display.update()
+        pygame.quit()
+
+#Código para cambiar a la pregunta 6
+    def pregunta6():
+        P1=P6
+        PB1=P6B1
+        PB2=P6B2
+        PB3=P6B3  
+        PB4=P6B4
+
+#Condicional que definirá si el usuario gana o pierde en este camino    
+        
+        ejecutarP6=True
+        while ejecutarP6:
+    #recorrer los enventos que se reproducen en la ventana
+            for event in pygame.event.get():
+                if event.type==pygame.MOUSEBUTTONDOWN:
+                    if cursor1.colliderect(PB1.rect) or cursor1.colliderect(PB2.rect) or cursor1.colliderect(PB3.rect) or cursor1.colliderect(PB4.rect):
+                        messagebox.showwarning("YOU WON!","Nivel Completado. Es usted libre. Puede seguir al siguiente nivel")
+                        finalLibre()
+                                
+            #se detecta cuando alguien cierra la ventana
+                if event.type == pygame.QUIT: 
+                    ejecutarP6 = False
+                    
+            reloj1.tick(20)
+        
+            pantalla.blit(P1,(10,300))
+    
+            cursor1.update()
+        
+            PB1.update(pantalla,cursor1)
+            PB2.update(pantalla,cursor1)
+            PB3.update(pantalla,cursor1)
+            PB4.update(pantalla,cursor1)
+            
+            pygame.display.update()
+        pygame.quit()
+
+    
+
+#Código para cambiar a la pregunta 5
+    def pregunta5():
+        O4N=Boton(P1N,P1N,263,430)
+        P1=P5
+        PB1=P5B1
+        PB2=P5B2
+        PB3=P5B3  
+        PB4=P1N
+#Condicional que definirá si el usuario gana o pierde en este camino    
+        
+        ejecutarP5=True
+        while ejecutarP5:
+    #recorrer los enventos que se reproducen en la ventana
+            for event in pygame.event.get():
+                
+                if event.type==pygame.MOUSEBUTTONDOWN:
+                    if cursor1.colliderect(PB1.rect) or cursor1.colliderect(PB2.rect) or cursor1.colliderect(PB3.rect):
+                        pregunta6()
+                        
+            #se detecta cuando alguien cierra la ventana
+                if event.type == pygame.QUIT: 
+                    ejecutarP5 = False
+                    
+            reloj1.tick(20)
+        
+            pantalla.blit(P1,(100,300))
+    
+            cursor1.update()
+        
+            PB1.update(pantalla,cursor1)
+            PB2.update(pantalla,cursor1)
+            PB3.update(pantalla,cursor1)
+            O4N.update(pantalla,cursor1)
+            
+            pygame.display.update()
+        pygame.quit()
+        
+    def final1():
+         if barraVerdad.get()=="Verdad":
+             pregunta5()
+         if barraVerdad.get()=="Mentira":
+             messagebox.showwarning("GAME OVER","Su vecino confesó que lo vio a usted cometer el asesinato. Usted va a la carcel")
+             finalCarcel()
+    
+    def final2():
+         if barraVerdad.get()=="Verdad":
+             pregunta7()
+         if barraVerdad.get()=="Mentira":
+             messagebox.showwarning("GAME OVER","Su vecino confesó que lo vio a usted cometer el asesinato. Usted va a la carcel")
+             finalCarcel()
+             
+             
+#Código para cambiar a la pregunta 4
+    def pregunta4():
+        P1=P4
+        ejecutarP4=True
+        while ejecutarP4:
+    #recorrer los enventos que se reproducen en la ventana
+            for event in pygame.event.get():
+                if event.type==pygame.MOUSEBUTTONDOWN:
+                    if cursor1.colliderect(PB1.rect):
+                        final2()
+                    if cursor1.colliderect(PB2.rect):
+                        messagebox.showwarning("GAME OVER","Usted está mintiendo. Va a la cárcel")
+                        finalCarcel()
+                        
+            #se detecta cuando alguien cierra la ventana
+                if event.type == pygame.QUIT: 
+                    ejecutarP4 = False
+                    
+            reloj1.tick(20)
+        
+            pantalla.blit(P1,(30,300))
+    
+            cursor1.update()
+        
+            PB1.update(pantalla,cursor1)
+            PB2.update(pantalla,cursor1)
+            
+            pygame.display.update()
+        pygame.quit()    
+        
+#Código para cambiar a la pregunta 3
+    def pregunta3():
+        O1N=Boton(P1N,P1N,60,370)
+        O2N=Boton(P1N,P1N,300,370)
+        P1=P3
+        PB1=P3B1
+        PB2=P3B2
+        ejecutarP3=True
+        while ejecutarP3:
+    #recorrer los enventos que se reproducen en la ventana
+            for event in pygame.event.get():
+                if event.type==pygame.MOUSEBUTTONDOWN:
+                    if cursor1.colliderect(PB1.rect) or cursor1.colliderect(PB2.rect) or cursor1.colliderect(PB4.rect):
+                        messagebox.showwarning("GAME OVER","Ese no es el nombre de la víctima. Usted está mintiendo. Va a la cárcel")
+                        finalCarcel()
+                    if cursor1.colliderect(PB3.rect):
+                        final1()
+                        
+            #se detecta cuando alguien cierra la ventana
+                if event.type == pygame.QUIT: 
+                    ejecutarP3 = False
+                    
+            reloj1.tick(20)
+        
+            pantalla.blit(P1,(110,295))
+    
+            cursor1.update()
+            O1N.update(pantalla,cursor1)
+            O2N.update(pantalla,cursor1)
+            PB1.update(pantalla,cursor1)
+            PB2.update(pantalla,cursor1)
+            PB3.update(pantalla,cursor1)
+            PB4.update(pantalla,cursor1)
+            
+            pygame.display.update()
+        pygame.quit()
+    
+#Código para cambiar a la pregunta 2:
+    def pregunta2():
+        P1=P2
+        ejecutarP2=True
+        while ejecutarP2:
+    #recorrer los enventos que se reproducen en la ventana
+            for event in pygame.event.get():
+                if event.type==pygame.MOUSEBUTTONDOWN:
+                    if cursor1.colliderect(PB1.rect):
+                        pregunta3()
+                    if cursor1.colliderect(PB2.rect):
+                        pregunta4()
+                        
+            #se detecta cuando alguien cierra la ventana
+                if event.type == pygame.QUIT: ejecutarP2 = False
+            reloj1.tick(20)
+        
+            pantalla.blit(P1,(122,300))
+    
+            cursor1.update()
+            
+            PB1.update(pantalla,cursor1)
+            PB2.update(pantalla,cursor1)
+            
+            pygame.display.update()
+        pygame.quit()
+
+
+#Bucle del juego para su ejecución
+    while ejecutar:
+    #recorrer los enventos que se reproducen en la ventana
+        for event in pygame.event.get():
+            if event.type==pygame.MOUSEBUTTONDOWN:
+                if cursor1.colliderect(PB1.rect):
+                    messagebox.showwarning("GAME OVER","Gracias por confesar. Usted va a la cárcel")
+                    finalCarcel()
+                if cursor1.colliderect(PB2.rect):
+                    pregunta2()
+                        
+            #se detecta cuando alguien cierra la ventana
+            if event.type == pygame.QUIT: ejecutar = False
+                
+                    
+        reloj1.tick(20)
+    
+        pantalla.blit(fondo, (0,0))
+        pantalla.blit(P1,(125,300))
+
+        cursor1.update()
+        PB1.update(pantalla,cursor1)
+        PB2.update(pantalla,cursor1)
+        pygame.display.update()
+    pygame.quit()
+   
+
+
+#EN ESTE PUNTO INICIA LA PROGRAMACIÓN GRÁFICA DE LA PRIMERA VENTANA
+    #Aspectos visuales generales de la primera ventana
+ventanainicial = tk.Tk()
+ventanainicial.title("Freedom dilemma")
+ventanainicial.geometry("1050x650")
+ventanainicial.configure(background="black")
+
+    #Aspectos visuales de la primera etiqueta
+e0=tk.Label(ventanainicial,text="Bienvenid@ a una experiencia diferente",bg="black",fg="red")
+e0.pack(fill=tk.X,padx=10,pady=10)
+e0.config(font=("Vineta BT",16)) 
+
+    #Aspectos visuales de la segunda etiqueta
+e1=tk.Label(ventanainicial,text="Por favor, ingrese su nombre:",bg="black",fg="white")
+e1.pack(fill=tk.X)
+e1.config(font=("GothicI",14)) 
+
+    #Aspectos visuales de la primera y única entrada del juego, el nombre del jugador
+entrada1=tk.Entry(ventanainicial)
+entrada1.pack(fill=tk.X)
+entrada1.config(font=("GothicI",14)) 
+
+    #Aspectos visuales de la tercera etiqueta
+e2=tk.Label(ventanainicial,text="Usted ha sido acusado de asesinato. Puede revisar el expediente forense",bg="black",fg="white")
+e2.pack(padx=10,pady=10)
+e2.config(font=("GothicI",14)) 
+
+    #Aspectos visuales del botón para abrir el expediente del caso
+expediente = PhotoImage(file="B1.gif")
+boton=tk.Button(ventanainicial,image=expediente,height=57,width=57,command=abrirExpediente)
+boton.pack(side=tk.TOP)
+
+    #Aspectos visuales de la cuarta etiqueta
+e3=tk.Label(ventanainicial,text="Escoja el nivel de dificultad:",bg="black",fg="white")
+e3.pack(padx=10,pady=10)
+e3.config(font=("GothicI",14)) 
+
+    #Definición y aspectos visuales de la lista para que el usuario elija el nivel en el que quiere desarrollar el juego
+var=tk.StringVar(ventanainicial)
+var.set("1")
+nivelescogido=tk.Label(ventanainicial,bg="black",textvariable=var,padx=5,pady=5)
+niveles=["1","2"]
+nivel=tk.OptionMenu(ventanainicial, var,*niveles)
+nivel.config(width=5,font=("GothicI",14))
+nivel.pack()
+nivel.config(font=("GothicI",14),bg="red",fg="black") 
+
+    #Definición y aspectos visuales de las instrucciones generales para el usuario
+v = StringVar()
+v.set("Deberá utilizar sus habilidades para escapar, pues en este país usted es su propio abogado")
+e4=tk.Label(ventanainicial,textvariable=v,bg="black",fg="white")
+e4.pack(padx=10,pady=10)
+e4.config(font=("GothicI",14)) 
+boton1=tk.Button(ventanainicial,text="Siguiente",bg="red",fg="black",command=cambiarTextoInicial)
+boton1.pack()
+boton1.config(font=("GothicI",14)) 
+
+e5=tk.Label(ventanainicial,text="Debe decidir si mentirle o no a la ley...")
+e5.pack(padx=10,pady=10)
+e5.config(font=("GothicI",14),bg="black",fg="white") 
+
+barraVerdad=tk.StringVar(ventanainicial)
+barraVerdad.set("Verdad")
+vom=["Verdad","Mentira"]
+listaVerdad=tk.OptionMenu(ventanainicial, barraVerdad,*vom)
+listaVerdad.config(width=5,font=("GothicI",14))
+listaVerdad.pack()
+listaVerdad.config(font=("GothicI",14),bg="white",fg="black") 
+
+    #Botón para iniciar el juego
+boton3=tk.Button(ventanainicial,text="Inicio",bg="white",fg="black",command=inicio)
+boton3.pack(padx=10,pady=10)
+boton3.config(font=("GothicI",14)) 
+
+#Todo lo que se encuentre arriba de esta línea se seguirá ejecutando dentro de la ventana
+ventanainicial.mainloop()
